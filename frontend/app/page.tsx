@@ -14,7 +14,7 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          github_repo: "Khaledkm4/thiqat-demo",
+          github_repo: "Khaledkm4/Thiqat-AI-Agent",
           target_file: "transfer.py",
         }),
       });
