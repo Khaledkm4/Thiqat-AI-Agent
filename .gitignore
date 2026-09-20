@@ -1,0 +1,12 @@
+# إخفاء البيئات الوهمية
+.venv/
+Backend/.venv/
+
+# إخفاء مفاتيح الـ API السرية
+.env
+Backend/.env
+
+# إخفاء ملفات الكاش وقاعدة البيانات المحلية الثقيلة
+__pycache__/
+sama_vectordb/
+node_modules/
