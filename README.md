@@ -22,15 +22,23 @@ It acts as a proactive compliance layer, autonomously scanning codebase changes,
 ## 📸 System Demonstration & Proof of Concept
 
 <img width="2646" height="1444" alt="لقطة شاشة 2026-09-21 023238" src="https://github.com/user-attachments/assets/b760c512-f0fb-495e-80e3-8692a8396a7a" />
+
+
 **1. Thiqat AI Dashboard:** Initiating the automated SAMA compliance scan.
 
 <img width="2670" height="1060" alt="لقطة شاشة 2026-09-22 035458" src="https://github.com/user-attachments/assets/c18da165-cfd2-4c8b-86f9-1758608c1521" />
+
+
 **2. AI Reasoning & Violation Detection:** The agent analyzes the code and explicitly flags SAMA regulatory violations (e.g., Requirement 1 & 4) before generating a fix.
 
 <img width="2662" height="964" alt="لقطة شاشة 2026-09-22 035647" src="https://github.com/user-attachments/assets/6b5396c6-b7a1-4d29-b8b1-fd7601b62f5b" />
+
+
 **3. Automated Compliance Resolution:** The agent successfully identifies logic violations, applies SAMA rules, and opens a PR with the corrected code.
 
 <img width="2660" height="930" alt="لقطة شاشة 2026-09-21 023143" src="https://github.com/user-attachments/assets/0a7909db-538a-4c51-b9e4-842c59561046" />
+
+
 **4. RAG Execution:** Backend terminal confirming successful vector database retrieval, semantic search, and successful agentic execution.
 
 ---
