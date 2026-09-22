@@ -1,6 +1,6 @@
 # Thiqat (ثِقَات) - Autonomous RegTech AI Agent
 
-<!-- 1️⃣ اسحب صورة الداشبورد (الواجهة الأمامية) وأفلتها في هذا السطر بالضبط 👇 -->
+<img width="2628" height="1428" alt="لقطة شاشة 2026-09-21 022316" src="https://github.com/user-attachments/assets/1048032a-9700-42a7-a843-3e58e4eb3a2c" />
 
 
 Thiqat is an enterprise-grade Autonomous Regulatory Technology (RegTech) AI Agent designed to ensure seamless and continuous codebase compliance with the Saudi Central Bank (SAMA) regulations. 
@@ -14,7 +14,7 @@ When a compliance violation is detected, the AI Agent acts independently to reso
 2. Rewrites the logic to achieve strict compliance.
 3. Automatically opens a PR with the corrected logic and regulatory justification.
 
-<!-- 2️⃣ اسحب صورة الـ Pull Request في جيت هاب وأفلتها في هذا السطر بالضبط 👇 -->
+<img width="2662" height="964" alt="لقطة شاشة 2026-09-22 035647" src="https://github.com/user-attachments/assets/a03baa4d-a2be-4e82-ab41-8080e778a52d" />
 
 
 ## 🏗️ System Architecture
@@ -23,7 +23,8 @@ When a compliance violation is detected, the AI Agent acts independently to reso
 * **Semantic Auditor:** Upon execution, the agent retrieves the target codebase and performs a semantic search against the Vector DB to extract the top-K relevant compliance rules.
 * **Enterprise Fallback System:** Implements a dynamic failover mechanism that automatically routes requests through a hierarchy of LLMs (Gemini Flash/Pro) to bypass `503 Service Unavailable` API bottlenecks and ensure zero downtime.
 
-<!-- 3️⃣ اسحب صورة التيرمنال (اللي توضح كيف الآيجنت استخرج القوانين) وأفلتها في هذا السطر بالضبط 👇 -->
+<img width="2660" height="930" alt="لقطة شاشة 2026-09-21 023143" src="https://github.com/user-attachments/assets/e6d4cc53-b248-449d-b571-5c7415d102b5" />
+
 
 
 ## 🚀 Local Installation & Setup
