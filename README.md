@@ -1,103 +1,48 @@
-Thiqat (ثِقَات) - Autonomous RegTech AI Agent
-Thiqat (meaning Trustworthy or Reliable in Arabic) is an advanced autonomous AI agent designed for the Regulatory Technology (RegTech) landscape. It leverages Multi-Agent Systems (MAS) and Retrieval-Augmented Generation (RAG) to automate compliance monitoring, regulatory change management, and risk assessment for financial institutions and legal entities.
+# Thiqat (ثِقَات) - Autonomous RegTech AI Agent
 
-The agent is built to parse complex regulatory frameworks, compare them against internal corporate policies, and provide actionable insights with high precision and auditability.
-Core Features
-Autonomous Regulatory Monitoring: Periodically scans global and local regulatory bodies for updates.
-Gap Analysis Engine: Automatically identifies discrepancies between new regulations and existing internal documentation.
-Intelligent RAG Pipeline: Context-aware retrieval of legal clauses using hybrid search (Vector + Keyword).
-Multi-Agent Orchestration: Specialized agents for research, drafting, and compliance validation.
-Multilingual Support: Native support for Arabic and English regulatory texts.
-Architecture
-Thiqat utilizes a modular architecture powered by a "Brain" (Orchestrator) that delegates tasks to specialized sub-agents.
+<!-- 1️⃣ اسحب صورة الداشبورد (الواجهة الأمامية) وأفلتها في هذا السطر بالضبط 👇 -->
 
-Ingestion Layer: Connectors for PDF, HTML, and API-based regulatory feeds.
-Cognitive Layer (LangGraph): Manages the state and logic flow between agents.
-Knowledge Base: A vector database (Pinecone/Milvus) storing indexed regulatory frameworks and internal policies.
-Feedback Loop: A human-in-the-loop (HITL) interface for compliance officers to verify agentic outputs.
-Tech Stack
-Component
-Technology
-Orchestration
-LangChain, LangGraph
-LLMs
-GPT-4o, Claude 3.5 Sonnet (Primary), Llama 3 (Local)
-Backend
-Python 3.10+, FastAPI
-Vector Database
-Pinecone / Qdrant
-Database
-PostgreSQL (with pgvector)
-Frontend
-Streamlit / React (for dashboard)
 
-Project Structure
-thiqat-ai/
+Thiqat is an enterprise-grade Autonomous Regulatory Technology (RegTech) AI Agent designed to ensure seamless and continuous codebase compliance with the Saudi Central Bank (SAMA) regulations. 
 
-├── agents/             # Custom agent definitions (Analyst, Researcher, Reviewer)
+By leveraging a local Retrieval-Augmented Generation (RAG) architecture and Large Language Models, Thiqat continuously monitors regulatory updates, scans repositories for compliance violations, and automatically generates corrective Python code via GitHub Pull Requests.
 
-├── chains/             # Specialized LangChain sequences
+## 🌟 Proof of Concept (Autonomous Execution)
 
-├── data/               # Local storage for regulatory documents
+When a compliance violation is detected, the AI Agent acts independently to resolve it:
+1. Performs semantic search on the local Vector DB to retrieve SAMA regulations.
+2. Rewrites the logic to achieve strict compliance.
+3. Automatically opens a PR with the corrected logic and regulatory justification.
 
-├── db/                 # Vector store and SQL configurations
+<!-- 2️⃣ اسحب صورة الـ Pull Request في جيت هاب وأفلتها في هذا السطر بالضبط 👇 -->
 
-├── schemas/            # Pydantic models for data validation
 
-├── tests/              # Unit and integration tests
+## 🏗️ System Architecture
 
-├── .env.example        # Environment variables template
+* **Knowledge Ingestion (Vector DB):** SAMA regulatory documents are processed and embedded locally using HuggingFace (`all-MiniLM-L6-v2`) and stored in a ChromaDB instance utilizing HNSW vector search algorithms.
+* **Semantic Auditor:** Upon execution, the agent retrieves the target codebase and performs a semantic search against the Vector DB to extract the top-K relevant compliance rules.
+* **Enterprise Fallback System:** Implements a dynamic failover mechanism that automatically routes requests through a hierarchy of LLMs (Gemini Flash/Pro) to bypass `503 Service Unavailable` API bottlenecks and ensure zero downtime.
 
-├── main.py             # Entry point for the FastAPI server
+<!-- 3️⃣ اسحب صورة التيرمنال (اللي توضح كيف الآيجنت استخرج القوانين) وأفلتها في هذا السطر بالضبط 👇 -->
 
-└── requirements.txt    # Python dependencies
-Setup Instructions
-Follow these steps to deploy Thiqat AI in your local environment.
-Prerequisites
-Python 3.10 or higher
-A valid API key for OpenAI or Anthropic
-Access to a Vector Database (local or cloud instance)
-Installation
-Clone the Repository:git clone https://github.com/thiqat-ai/core.git
 
-cd core
+## 🚀 Local Installation & Setup
 
-Create a Virtual Environment:python -m venv venv
+### Prerequisites
+* Python 3.10+
+* Node.js 18+
+* GitHub Personal Access Token (PAT)
+* Google Gemini API Key
 
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+### 1. Backend Setup (FastAPI & Vector DB)
+Navigate to the backend directory and set up the virtual environment:
 
-Install Dependencies:pip install -r requirements.txt
-Configuration
-Create a .env file in the root directory and populate it with your credentials:OPENAI_API_KEY=your_openai_key_here
+```bash
+cd Backend
+python -m venv .venv
 
-ANTHROPIC_API_KEY=your_anthropic_key_here
+# Activate Virtual Environment (Windows)
+.\.venv\Scripts\activate
 
-PINECONE_API_KEY=your_pinecone_key_here
-
-DATABASE_URL=postgresql://user:password@localhost:5432/thiqat_db
-Running the Application
-Initialize the Database:python scripts/init_db.py
-Launch the API Server:uvicorn main:app --reload
-Access the Dashboard:
-Navigate to http://localhost:8000/docs to interact with the API via Swagger UI.
-Usage Example
-To run a compliance check on a specific document, use the following endpoint:curl -X 'POST' \
-
-  'http://localhost:8000/api/v1/compliance/check' \
-
-  -H 'Content-Type: application/json' \
-
-  -d '{
-
-  "document_id": "policy_ref_001",
-
-  "regulatory_framework": "SAMA_Banking_Rules_2024"
-
-}'
-License
-This project is licensed under the Apache License 2.0. See the LICENSE file for more details.
-Contributors
-Person - Lead Architect
-Person - AI Engineer
-
-For support or collaboration inquiries, please contact Person or visit Place.
+# Install core dependencies
+pip install fastapi uvicorn github python-dotenv google-genai langchain-huggingface langchain-chroma sentence-transformers pydantic
