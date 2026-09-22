@@ -1,14 +1,17 @@
 # 🛡️ Thiqat (ثِقَات) - Headless RegTech AI Agent
 
 ## 💡 Overview
-**Thiqat** is an autonomous Headless RegTech AI Agent designed to ensure seamless compliance with SAMA (Saudi Central Bank) regulations in FinTech and banking software. 
-It acts as a proactive compliance layer, autonomously scanning codebase changes, cross-referencing them against the latest SAMA regulatory documents using Retrieval-Augmented Generation (RAG), and automatically generating code-fixes via GitHub Pull Requests before non-compliant code reaches production.
+
+Thiqat is a Headless RegTech AI Agent designed with a Human-in-the-Loop (HITL) architecture to ensure seamless compliance with SAMA (Saudi Central Bank) regulations in FinTech and banking software. It acts as an intelligent, proactive compliance assistant for engineering teams. 
+
+Instead of blind automation, Thiqat scans codebase changes, cross-references them against the latest SAMA regulatory documents using Retrieval-Augmented Generation (RAG), and explicitly flags logical conflicts. When a violation is detected, the agent autonomously generates a compliant code-fix and opens a GitHub Pull Request. This empowers the lead engineer to review, approve, and merge the code, ensuring strict compliance without sacrificing human oversight.
 
 ## ⚙️ Technical Highlights
-- **Agentic Workflows:** Orchestrates a fully autonomous reasoning pipeline (Identify ➔ Retrieve ➔ Fix ➔ PR) utilizing large language models.
-- **RAG & Vector Search:** Implements a robust Knowledge Base mapping SAMA regulatory frameworks for semantic retrieval using high-dimensional embeddings.
-- **Dynamic Resiliency:** Engineered with dynamic LLM routing (e.g., Gemini Pro/Flash fallback) to handle API bottlenecks and ensure zero system downtime during automated compliance scans.
-- **Automated CI/CD Integration:** Leverages GitHub REST APIs securely via PyGithub to automate repository cloning, file manipulation, and Pull Request generation.
+
+* **Human-in-the-Loop (HITL) Agentic Workflows:** Orchestrates a structured reasoning pipeline (Ingest → Audit → Propose → PR) utilizing large language models, keeping the final architectural decision in the hands of the engineer.
+* **RAG & Vector Search:** Implements a robust Knowledge Base mapping SAMA regulatory frameworks for semantic retrieval using high-dimensional embeddings.
+* **Dynamic Resiliency:** Engineered with dynamic LLM routing (e.g., Gemini Pro/Flash fallback) to handle API bottlenecks and ensure zero system downtime during automated compliance scans.
+* **Automated CI/CD Integration:** Leverages GitHub REST APIs securely via PyGithub to automate repository cloning, file manipulation, and Pull Request generation.
 
 ## 🛠️ Tech Stack
 - **Backend:** Python 3.10+, FastAPI
