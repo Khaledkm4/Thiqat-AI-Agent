@@ -1,39 +1,47 @@
-# Thiqat (ثِقَات) - Autonomous RegTech AI Agent
+# 🛡️ Thiqat (ثِقَات) - Headless RegTech AI Agent
 
-<img width="2628" height="1428" alt="لقطة شاشة 2026-09-21 022316" src="https://github.com/user-attachments/assets/1048032a-9700-42a7-a843-3e58e4eb3a2c" />
+## 💡 Overview
+**Thiqat** is an autonomous Headless RegTech AI Agent designed to ensure seamless compliance with SAMA (Saudi Central Bank) regulations in FinTech and banking software. 
+It acts as a proactive compliance layer, autonomously scanning codebase changes, cross-referencing them against the latest SAMA regulatory documents using Retrieval-Augmented Generation (RAG), and automatically generating code-fixes via GitHub Pull Requests before non-compliant code reaches production.
 
+## ⚙️ Technical Highlights
+- **Agentic Workflows:** Orchestrates a fully autonomous reasoning pipeline (Identify ➔ Retrieve ➔ Fix ➔ PR) utilizing large language models.
+- **RAG & Vector Search:** Implements a robust Knowledge Base mapping SAMA regulatory frameworks for semantic retrieval using high-dimensional embeddings.
+- **Dynamic Resiliency:** Engineered with dynamic LLM routing (e.g., Gemini Pro/Flash fallback) to handle API bottlenecks and ensure zero system downtime during automated compliance scans.
+- **Automated CI/CD Integration:** Leverages GitHub REST APIs securely via PyGithub to automate repository cloning, file manipulation, and Pull Request generation.
 
-Thiqat is an enterprise-grade Autonomous Regulatory Technology (RegTech) AI Agent designed to ensure seamless and continuous codebase compliance with the Saudi Central Bank (SAMA) regulations. 
+## 🛠️ Tech Stack
+- **Backend:** Python 3.10+, FastAPI
+- **AI & Reasoning:** Google Gemini API, RAG Architecture
+- **Integration:** PyGithub (GitHub REST API)
+- **Vector Database:** Local Embedding & Vector Search
+- **Frontend:** Next.js (React), Node.js
 
-By leveraging a local Retrieval-Augmented Generation (RAG) architecture and Large Language Models, Thiqat continuously monitors regulatory updates, scans repositories for compliance violations, and automatically generates corrective Python code via GitHub Pull Requests.
+---
 
-## 🌟 Proof of Concept (Autonomous Execution)
+## 📸 System Demonstration & Proof of Concept
 
-When a compliance violation is detected, the AI Agent acts independently to resolve it:
-1. Performs semantic search on the local Vector DB to retrieve SAMA regulations.
-2. Rewrites the logic to achieve strict compliance.
-3. Automatically opens a PR with the corrected logic and regulatory justification.
+<img width="2646" height="1444" alt="لقطة شاشة 2026-09-21 023238" src="https://github.com/user-attachments/assets/b760c512-f0fb-495e-80e3-8692a8396a7a" />
+**1. Thiqat AI Dashboard:** Initiating the automated SAMA compliance scan.
 
-<img width="2662" height="964" alt="لقطة شاشة 2026-09-22 035647" src="https://github.com/user-attachments/assets/a03baa4d-a2be-4e82-ab41-8080e778a52d" />
+<img width="2670" height="1060" alt="لقطة شاشة 2026-09-22 035458" src="https://github.com/user-attachments/assets/c18da165-cfd2-4c8b-86f9-1758608c1521" />
+**2. AI Reasoning & Violation Detection:** The agent analyzes the code and explicitly flags SAMA regulatory violations (e.g., Requirement 1 & 4) before generating a fix.
 
+<img width="2662" height="964" alt="لقطة شاشة 2026-09-22 035647" src="https://github.com/user-attachments/assets/6b5396c6-b7a1-4d29-b8b1-fd7601b62f5b" />
+**3. Automated Compliance Resolution:** The agent successfully identifies logic violations, applies SAMA rules, and opens a PR with the corrected code.
 
-## 🏗️ System Architecture
+<img width="2660" height="930" alt="لقطة شاشة 2026-09-21 023143" src="https://github.com/user-attachments/assets/0a7909db-538a-4c51-b9e4-842c59561046" />
+**4. RAG Execution:** Backend terminal confirming successful vector database retrieval, semantic search, and successful agentic execution.
 
-* **Knowledge Ingestion (Vector DB):** SAMA regulatory documents are processed and embedded locally using HuggingFace (`all-MiniLM-L6-v2`) and stored in a ChromaDB instance utilizing HNSW vector search algorithms.
-* **Semantic Auditor:** Upon execution, the agent retrieves the target codebase and performs a semantic search against the Vector DB to extract the top-K relevant compliance rules.
-* **Enterprise Fallback System:** Implements a dynamic failover mechanism that automatically routes requests through a hierarchy of LLMs (Gemini Flash/Pro) to bypass `503 Service Unavailable` API bottlenecks and ensure zero downtime.
-
-<img width="2660" height="930" alt="لقطة شاشة 2026-09-21 023143" src="https://github.com/user-attachments/assets/e6d4cc53-b248-449d-b571-5c7415d102b5" />
-
-
+---
 
 ## 🚀 Local Installation & Setup
 
 ### Prerequisites
-* Python 3.10+
-* Node.js 18+
-* GitHub Personal Access Token (PAT)
-* Google Gemini API Key
+- Python 3.10+
+- Node.js 18+
+- GitHub Personal Access Token (PAT) with `repo` permissions
+- Google Gemini API Key
 
 ### 1. Backend Setup (FastAPI & Vector DB)
 Navigate to the backend directory and set up the virtual environment:
@@ -45,5 +53,45 @@ python -m venv .venv
 # Activate Virtual Environment (Windows)
 .\.venv\Scripts\activate
 
+# Activate Virtual Environment (Mac/Linux)
+source .venv/bin/activate
+
 # Install core dependencies
-pip install fastapi uvicorn github python-dotenv google-genai langchain-huggingface langchain-chroma sentence-transformers pydantic
+pip install fastapi uvicorn github python-dotenv google-genai
+```
+
+Configure your environment variables by creating a `.env` file in the `Backend` directory:
+
+```env
+GITHUB_TOKEN=your_github_token_here
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Initialize the Local Knowledge Base (Vector DB):
+
+```bash
+python update_knowledge.py
+```
+
+Start the FastAPI Server:
+
+```bash
+uvicorn main:app --reload
+```
+
+### 2. Frontend Setup
+Open a new terminal window, navigate to the frontend directory, and start the development server:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+## 🎯 How It Works (The Agent Pipeline)
+1. **Trigger:** The system receives a scan request for a specific target code file (e.g., `transfer.py`).
+2. **Retrieve:** The RAG system queries the vector database for relevant SAMA compliance requirements (e.g., validating transaction amounts, explicit customer authorization, and ensuring immutable audit logs).
+3. **Analyze & Fix:** The AI Agent compares the target code against the retrieved financial rules. If a violation is detected, it automatically rewrites the logic to enforce compliance.
+4. **Push:** The agent securely connects to the GitHub repository, creates a new branch, commits the corrected code, and opens a Pull Request for human review.
